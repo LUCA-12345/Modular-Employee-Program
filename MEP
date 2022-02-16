@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+int getNumEmployee ();
+int countMissedDays (int);
+float calAverageAbsence (int,int);
+
+int main ()
+{
+    int numEmp; 
+    int totalMissedDays;
+    float average;
+
+    numEmp = getNumEmployee ();
+
+    totalMissedDays = countMissedDays (numEmp);
+    cout << "Total number of missed days: " << totalMissedDays << endl;
+
+    average = calAverageAbsence (numEmp, totalMissedDays);
+    cout << "Average number of missed days per employee: " << average << endl;
+    //cout << calAverageAbsence (numEmp, totalMissedDays) << endl; 
+
+
+    return 0;
+}
+
+int getNumEmployee ()
+{
+     int numEmp;
+
+    cout << "How many employees are in the company?";
+    cin >> numEmp;
+
+    while ( numEmp <= 0)
+    {
+        cout << "Invalid number of employees";
+        cin >> numEmp;
+    }
+
+
+    return numEmp;
+}
+
+int countMissedDays (int numEmp)
+{
+    int totalMissedDays = 0;
+    int missedDays = 0;
+     
+    for (int i = 0; i < numEmp; i++)
+    {
+        do
+        { 
+            cout << "Enter number of missed days for employee " << i+1;
+            cout << ":" << endl; 
+            cin >> missedDays;
+            totalMissedDays += missedDays;
+        }
+        while ( missedDays < 0 );
+    } 
+            
+
+    return totalMissedDays;
+} 
+
+float calAverageAbsence (int numEmp, int totalMissedDays)
+{
+    float average;
+
+    average = (float)totalMissedDays / numEmp ;
+
+
+    return average; 
+}
